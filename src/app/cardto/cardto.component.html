@@ -1,0 +1,27 @@
+<div class="car-header">
+    Araba Detayları
+</div>
+<ul *ngIf="dataLoaded==true">
+    <li *ngFor="let image of carImages">
+        <img src="https://localhost:44397/{{image.imagePath}}" alt="hadicici">
+    </li>
+</ul>
+<table *ngIf="dataLoaded==true" class="table">
+    <thead>
+        <th>Araba Numarası </th>
+        <th>Markası </th>
+        <th>Rengi </th>
+        <th>Model Yılı </th>
+        <th>Günlük Ücreti </th>
+        <th>Açıklaması </th>
+    </thead>
+    <tbody>
+        <td>{{carDetails.carId}}</td>
+        <td>{{carDetails.brandName}}</td>
+        <td>{{carDetails.colorName}}</td>
+        <td>{{carDetails.modelYear}}</td>
+        <td>{{carDetails.dailyPrice}}</td>
+        <td>{{carDetails.description}}</td>
+
+    </tbody>
+</table>

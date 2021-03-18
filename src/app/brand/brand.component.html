@@ -1,18 +1,8 @@
-<div *ngIf="dataLoaded===false" class="spinner-border text-primary" role="status">
-    <span class="sr-only">Loading...</span>
-</div>
+<ul class="list-group">
 
-<table *ngIf="dataLoaded!=false" class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Marka Adı</th>
-        </tr>
-    </thead>
+    <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()" routerLink="/cars" class="list-group-item bg-danger">Tüm Markalar</li>
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-dark" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
+        {{ brand.brandName }}
+    </li>
 
-
-    <tr *ngFor="let brand of brands">
-        <td>{{brand.brandId}}</td>
-        <td>{{brand.brandName}}</td>
-    </tr>
-</table>
+</ul>
