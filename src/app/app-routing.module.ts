@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarComponent } from './car/car.component';
 import { CardtoComponent } from './cardto/cardto.component';
-import { ColorComponent } from './color/color.component';
+
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:CarComponent},

@@ -3,8 +3,6 @@
         <tr>
             <th>Id</th>
             <th>Araba Adı</th>
-            <th>Brand Id</th>
-            <th>Color Id</th>
             <th>descriptiopns</th>
             <th>Modelyear</th>
             <th>Günlük Fiyat</th>
@@ -17,8 +15,7 @@
         <tr *ngFor="let car of cars">
             <td>{{car.carId}}</td>
             <td>{{car.carName}}</td>
-            <td>{{car.brandId}}</td>
-            <td>{{car.colorId}}</td>
+
             <td>{{car.descriptions}}</td>
             <td>{{car.modelYear}}</td>
             <td>{{car.dailyPrice}}</td>
@@ -26,6 +23,7 @@
                 <button routerLink="/cars/cardto/{{car.carId}}" type="button" class=" btn btn-secondary" (click)="getCarDetails(car.carId)">
                     Detayları Gör
               </button>
+
             </td>
         </tr>
 
