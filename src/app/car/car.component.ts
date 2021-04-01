@@ -20,11 +20,12 @@ export class CarComponent implements OnInit {
 
 
 
-  cars: Car[] = [];
+ filterText="";
   carDetails:CarDto[]=[];
   carImage:CarImage;
   apiUrl = "https://localhost:44397/images/";
   carImageDefault="https://localhost:44397/images/default.jpg"
+
   currentCarImage:CarImage;
   dataLoaded=false;
 
@@ -32,11 +33,12 @@ export class CarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dataLoaded=false;
     this.activatedRoute.params.subscribe((params) => {
       if (params['brandId']) {
-        this.getCarsAllByBranId(params['brandId']);
+        this.getCarDetailsAllByBranId(params['brandId']);
       } else if (params['colorId']) {
-        this.getCarsAllByColorId(params['colorId']);
+        this.getCarDetailsColorId(params['colorId']);
       } else {
         this.getCars()
       }
@@ -49,29 +51,25 @@ export class CarComponent implements OnInit {
       this.dataLoaded=true;
     })
   }
-  getCarDetailsParametresiz(){
-    this.carService.getCarDetailsParametresiz().subscribe((response)=>{
-      this.carDetails =response.data;
-      this.dataLoaded=true;
-    })
-  }
+  
   getCars() {
-    this.carService.getCars().subscribe((response) => {
-      this.cars = response.data;
+    this.carService.getCarDetailsParametresiz().subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded=true;
     });
   }
 
-  getCarsAllByBranId(brandId: number) {
-    this.carService.getCarsByBrandId(brandId).subscribe((response) => {
-      this.cars = response.data;
+  getCarDetailsAllByBranId(brandId: number) {
+    this.carService.getCarDetailByBrandId(brandId).subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded=true;
+      console.log(response,this.carDetails)
     });
   }
 
-  getCarsAllByColorId(colorId: number) {
-    this.carService.getCarsByColorId(colorId).subscribe((response) => {
-      this.cars = response.data;
+  getCarDetailsColorId(colorId: number) {
+    this.carService.getCarDetailByColorId(colorId).subscribe((response) => {
+      this.carDetails = response.data;
       this.dataLoaded=true;
     });
   }

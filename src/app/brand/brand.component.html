@@ -1,8 +1,27 @@
 <ul class="list-group">
 
     <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()" routerLink="/cars" class="list-group-item bg-danger">Tüm Markalar</li>
-    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-dark" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.brandId}}" class="list-group-item list-group-item-dark" *ngFor="let brand of brands " [class]="getCurrentBrandClass(brand)">
         {{ brand.brandName }}
     </li>
 
 </ul>
+
+
+<!-- 
+<form class="form-inline">
+    <div class="form-group mb-2">
+        <select class="form-select" [(ngModel)]="brandIdFilter">
+          <option selected disable> Tüm Markalar</option>
+      <option [value]="Tum Markalar" >Tüm Markalar</option>
+          <option *ngFor="let brand of brands" [value]="brand.brandId"
+      [selected]="getCurrentBrandClass(brand)" >
+        {{ brand.brandName }}
+      </option>
+    </select>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button [routerLink]="'/cars/brand/' + brandIdFilter" type="button" class="btn btn-primary mb-2">Filtrele</button>
+        <button routerLink="/cars" type="button" class="btn btn-danger mb-2">Temizle</button>
+    </div>
+</form> -->

@@ -17,7 +17,7 @@ rentals :Rental []=[];
     this.getRentals();
   }
 getRentals(){
-this.rentalService.getRentalAll().subscribe((response)=>{
+this.rentalService.getRentalDetail().subscribe((response)=>{
   this.rentals=response.data
 })
 }

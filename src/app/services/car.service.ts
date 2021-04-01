@@ -29,17 +29,19 @@ getCarDetails(carId:number):Observable<ListResponseModel<CarDto>>
     let newPath = this.apiUrl + "cars/getcardetails";
     return this.httpClient.get<ListResponseModel<CarDto>>(newPath);
   }
-  getCarsByBrandId(brandId:number):Observable<ListResponseModel<Car>>
+  getCarDetailByBrandId(brandId:number):Observable<ListResponseModel<CarDto>>
   {
-    let newPath = this.apiUrl + "cars/getallbybrandid?brandid="+brandId;
-    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+    let newPath = this.apiUrl + "cars/getcardetailbybrandid?brandId="+brandId;
+    return this.httpClient.get<ListResponseModel<CarDto>>(newPath);
   }
+  getCarDetailByColorId(colorId:number):Observable<ListResponseModel<CarDto>>
+  {
+    let newPath = this.apiUrl + "cars/getcardetailbycolorid?colorId="+colorId;
+    return this.httpClient.get<ListResponseModel<CarDto>>(newPath);
+  }
+  
 
-  getCarsByColorId(colorId:number):Observable<ListResponseModel<Car>>
-  {
-    let newPath = this.apiUrl + "cars/getallbycolorid?colorid="+colorId;
-    return this.httpClient.get<ListResponseModel<Car>>(newPath);
-  }
+  
 
 
 }

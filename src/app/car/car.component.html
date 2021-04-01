@@ -1,33 +1,30 @@
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>Id</th>
-            <th>Araba Adı</th>
-            <th>descriptiopns</th>
-            <th>Modelyear</th>
-            <th>Günlük Fiyat</th>
-            <th>Detayları İncele</th>
-
-        </tr>
-    </thead>
-    <tbody>
-
-        <tr *ngFor="let car of cars">
-            <td>{{car.carId}}</td>
-            <td>{{car.carName}}</td>
-
-            <td>{{car.descriptions}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
-            <td>
-                <button routerLink="/cars/cardto/{{car.carId}}" type="button" class=" btn btn-secondary" (click)="getCarDetails(car.carId)">
-                    Detayları Gör
-              </button>
-
-            </td>
-        </tr>
+<div class="mb-3">
+    <label for="filterText" class="form-label">Araba Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" aria-describedby="emailHelp" placeholder="Arama ifadesi giriniz">
+</div>
 
 
-    </tbody>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+    {{filterText}} arandı
+</div>
 
-</table>
+
+
+<div class="row">
+
+    <div class="card" style="width: 18rem;" *ngFor="let car of carDetails | carFilter:filterText">
+
+        <img *ngIf="car.imagePath[0]!=null" src="https://localhost:44397{{car.imagePath[0]}}" class="card-img-top" alt="...">
+        <img *ngIf="car.imagePath[0]==null" src="https://localhost:44397/images/default.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{car.carName}}</h5>
+            <!-- <p class="card-text">{{car.description}}</p> -->
+            <p class="card-text">{{car.colorName}}</p>
+            <p class="card-text">{{car.brandName}}</p>
+            <button routerLink="/cars/cardto/{{car.carId}}" type="button" class=" btn btn-secondary" (click)="getCarDetails(car.carId)">
+                Detayları Gör
+          </button>
+        </div>
+    </div>
+
+</div>
